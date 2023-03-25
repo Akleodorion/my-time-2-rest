@@ -1,4 +1,5 @@
 class OffersController < ApplicationController
+
   def show
   end
 
@@ -9,6 +10,7 @@ class OffersController < ApplicationController
   end
 
   def index
+    @offers = current_user.nil? ? Offer.all : Offer.excluding_user(current_user.id)
   end
 
   def destroy
